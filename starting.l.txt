@@ -1,0 +1,17 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+^[aeiouAEIOU][a-zA-Z]*    printf("String accepted: %s\n", yytext);
+.                          printf("String rejected: %s\n", yytext);
+%%
+
+int yywrap() {
+    return 1;
+}
+
+int main() {
+    yylex();
+    return 0;
+}

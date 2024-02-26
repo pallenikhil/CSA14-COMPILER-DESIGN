@@ -1,0 +1,18 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%%
+int main(int argc, char *argv[]) {
+    FILE *input_file = fopen(argv[1], "r");
+    FILE *output_file = fopen("output.txt", "w");
+    char word[100];
+    while (fscanf(input_file, "%s", word) != EOF)
+        fprintf(output_file, "%s ", strcmp(word, argv[2]) ? word : argv[3]);
+    fclose(input_file);
+    fclose(output_file);
+    printf("Word replaced successfully.\n");
+    return 0;
+}
+%%
